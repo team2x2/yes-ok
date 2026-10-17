@@ -1,8 +1,4 @@
-curl -X 'POST' \
-  'https://api.rubis.app/v2/scrap?public=true&title=asdasdds' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: text/plain' \
-  -d -- Gui to Lua V5.1 (Shadow Edition)
+-- Gui to Lua V5.1 (Shadow Edition)
 -- GUI : f3xv3
 
 local Players   = game:GetService('Players')
