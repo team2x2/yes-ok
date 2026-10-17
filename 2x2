@@ -1395,7 +1395,7 @@ _i[42].TextStrokeColor3 = Color3.fromRGB(255,255,255)
 _i[42].TextStrokeTransparency = 0
 _i[42].TextTransparency = 0
 _i[42].TextTruncate = Enum.TextTruncate.None
-_i[42].TextWrapped = false
+_i[42].TextWrapped = true
 _i[42].TextXAlignment = Enum.TextXAlignment.Center
 _i[42].TextYAlignment = Enum.TextYAlignment.Center
 _i[42].Name = [[TextLabel]]
@@ -1428,7 +1428,7 @@ _i[43].TextStrokeColor3 = Color3.fromRGB(255,255,255)
 _i[43].TextStrokeTransparency = 0
 _i[43].TextTransparency = 0
 _i[43].TextTruncate = Enum.TextTruncate.None
-_i[43].TextWrapped = false
+_i[43].TextWrapped = true
 _i[43].TextXAlignment = Enum.TextXAlignment.Center
 _i[43].TextYAlignment = Enum.TextYAlignment.Center
 _i[43].Name = [[TextLabel]]
@@ -2379,7 +2379,50 @@ end
 
 -- Scripts:
 
-local function MAUIH_fake_script()
+local function UHPEZ_fake_script()
+	local script = Instance.new('LocalScript')
+	script.Name = [[Drag]]
+	script.Parent = _i[2]
+
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+	
+end
+coroutine.wrap(UHPEZ_fake_script)()
+
+local function SGTNJ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[3]
@@ -2660,9 +2703,9 @@ local function MAUIH_fake_script()
 	
 	end)
 end
-coroutine.wrap(MAUIH_fake_script)()
+coroutine.wrap(SGTNJ_fake_script)()
 
-local function NZIVH_fake_script()
+local function YIKRS_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[4]
@@ -2674,52 +2717,9 @@ local function NZIVH_fake_script()
 		RequestCommand:InvokeServer(";disco")
 	end)
 end
-coroutine.wrap(NZIVH_fake_script)()
+coroutine.wrap(YIKRS_fake_script)()
 
-local function FXCWW_fake_script()
-	local script = Instance.new('LocalScript')
-	script.Name = [[Drag]]
-	script.Parent = _i[2]
-
-	local UIS = game:GetService('UserInputService')
-	local frame = script.Parent
-	local dragToggle = nil
-	local dragSpeed = 0.25
-	local dragStart = nil
-	local startPos = nil
-	
-	local function updateInput(input)
-		local delta = input.Position - dragStart
-		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-	end
-	
-	frame.InputBegan:Connect(function(input)
-		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-			dragToggle = true
-			dragStart = input.Position
-			startPos = frame.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragToggle = false
-				end
-			end)
-		end
-	end)
-	
-	UIS.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			if dragToggle then
-				updateInput(input)
-			end
-		end
-	end)
-	
-end
-coroutine.wrap(FXCWW_fake_script)()
-
-local function LKSGL_fake_script()
+local function WWSSJ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[5]
@@ -2731,9 +2731,9 @@ local function LKSGL_fake_script()
 		RequestCommand:InvokeServer(";music 18841888868  ;pitch 1 ;volume inf")
 	end)
 end
-coroutine.wrap(LKSGL_fake_script)()
+coroutine.wrap(WWSSJ_fake_script)()
 
-local function PNJKF_fake_script()
+local function VFTSJ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[6]
@@ -2745,9 +2745,9 @@ local function PNJKF_fake_script()
 		RequestCommand:InvokeServer(";music 116518425059636  ;pitch 1 ;volume inf")
 	end)
 end
-coroutine.wrap(PNJKF_fake_script)()
+coroutine.wrap(VFTSJ_fake_script)()
 
-local function CCWLH_fake_script()
+local function LNIEC_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[7]
@@ -2799,9 +2799,9 @@ local function CCWLH_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(CCWLH_fake_script)()
+coroutine.wrap(LNIEC_fake_script)()
 
-local function IIGWN_fake_script()
+local function VEANM_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[8]
@@ -2999,9 +2999,9 @@ local function IIGWN_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(IIGWN_fake_script)()
+coroutine.wrap(VEANM_fake_script)()
 
-local function HIWMF_fake_script()
+local function RROPS_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[9]
@@ -3282,9 +3282,9 @@ local function HIWMF_fake_script()
 	
 	end)
 end
-coroutine.wrap(HIWMF_fake_script)()
+coroutine.wrap(RROPS_fake_script)()
 
-local function ENASM_fake_script()
+local function GGSUK_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[10]
@@ -3402,9 +3402,9 @@ local function ENASM_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(ENASM_fake_script)()
+coroutine.wrap(GGSUK_fake_script)()
 
-local function WPNSQ_fake_script()
+local function EJYTK_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[11]
@@ -3685,9 +3685,9 @@ local function WPNSQ_fake_script()
 	
 	end)
 end
-coroutine.wrap(WPNSQ_fake_script)()
+coroutine.wrap(EJYTK_fake_script)()
 
-local function UOZIK_fake_script()
+local function YQDSZ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[12]
@@ -3699,9 +3699,9 @@ local function UOZIK_fake_script()
 		RequestCommand:InvokeServer(";music 95156028272944  ;pitch 0.2 ;volume inf")
 	end)
 end
-coroutine.wrap(UOZIK_fake_script)()
+coroutine.wrap(YQDSZ_fake_script)()
 
-local function TIEXU_fake_script()
+local function NRWFQ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[13]
@@ -3713,9 +3713,9 @@ local function TIEXU_fake_script()
 		RequestCommand:InvokeServer(";music 134426707262246 ;pitch 1 ;volume inf")
 	end)
 end
-coroutine.wrap(TIEXU_fake_script)()
+coroutine.wrap(NRWFQ_fake_script)()
 
-local function VRARH_fake_script()
+local function JQPEP_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[14]
@@ -3727,9 +3727,9 @@ local function VRARH_fake_script()
 		RequestCommand:InvokeServer(";music 95031111046670 ;pitch 1 ;volume inf")
 	end)
 end
-coroutine.wrap(VRARH_fake_script)()
+coroutine.wrap(JQPEP_fake_script)()
 
-local function OLEBQ_fake_script()
+local function KUTII_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[15]
@@ -4010,9 +4010,9 @@ local function OLEBQ_fake_script()
 	
 	end)
 end
-coroutine.wrap(OLEBQ_fake_script)()
+coroutine.wrap(KUTII_fake_script)()
 
-local function VVMTI_fake_script()
+local function ZYIKU_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[16]
@@ -4130,9 +4130,9 @@ local function VVMTI_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(VVMTI_fake_script)()
+coroutine.wrap(ZYIKU_fake_script)()
 
-local function NUOTY_fake_script()
+local function PLRHK_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[17]
@@ -4250,9 +4250,9 @@ local function NUOTY_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(NUOTY_fake_script)()
+coroutine.wrap(PLRHK_fake_script)()
 
-local function HJYXF_fake_script()
+local function OPTIG_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[18]
@@ -4370,9 +4370,9 @@ local function HJYXF_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(HJYXF_fake_script)()
+coroutine.wrap(OPTIG_fake_script)()
 
-local function ROSCH_fake_script()
+local function HKNWI_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[19]
@@ -4653,9 +4653,9 @@ local function ROSCH_fake_script()
 	
 	end)
 end
-coroutine.wrap(ROSCH_fake_script)()
+coroutine.wrap(HKNWI_fake_script)()
 
-local function YZMMA_fake_script()
+local function SKHKU_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[20]
@@ -4853,9 +4853,9 @@ local function YZMMA_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(YZMMA_fake_script)()
+coroutine.wrap(SKHKU_fake_script)()
 
-local function RYBVX_fake_script()
+local function FQVUS_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[21]
@@ -4877,9 +4877,9 @@ local function RYBVX_fake_script()
 		loadstring(game:HttpGet("https://pastebin.com/raw/vfG1yvzp"))()
 	end)
 end
-coroutine.wrap(RYBVX_fake_script)()
+coroutine.wrap(FQVUS_fake_script)()
 
-local function KLXTI_fake_script()
+local function KNRGH_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[22]
@@ -5077,9 +5077,9 @@ local function KLXTI_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(KLXTI_fake_script)()
+coroutine.wrap(KNRGH_fake_script)()
 
-local function ZEZRE_fake_script()
+local function CCFYY_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[23]
@@ -5277,9 +5277,9 @@ local function ZEZRE_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(ZEZRE_fake_script)()
+coroutine.wrap(CCFYY_fake_script)()
 
-local function BTPFF_fake_script()
+local function QMPLC_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[24]
@@ -5350,9 +5350,9 @@ local function BTPFF_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(BTPFF_fake_script)()
+coroutine.wrap(QMPLC_fake_script)()
 
-local function JYWHM_fake_script()
+local function HATEE_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[25]
@@ -5364,9 +5364,9 @@ local function JYWHM_fake_script()
 		RequestCommand:InvokeServer(";music 87174269808530  ;pitch 0.1 ;volume inf")
 	end)
 end
-coroutine.wrap(JYWHM_fake_script)()
+coroutine.wrap(HATEE_fake_script)()
 
-local function VBSMW_fake_script()
+local function JLWZV_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[26]
@@ -5465,9 +5465,9 @@ local function VBSMW_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(VBSMW_fake_script)()
+coroutine.wrap(JLWZV_fake_script)()
 
-local function CLACR_fake_script()
+local function SNGTO_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[27]
@@ -5665,9 +5665,9 @@ local function CLACR_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(CLACR_fake_script)()
+coroutine.wrap(SNGTO_fake_script)()
 
-local function ISLUH_fake_script()
+local function GPQRP_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[28]
@@ -5753,9 +5753,9 @@ local function ISLUH_fake_script()
 		end
 	end)
 end
-coroutine.wrap(ISLUH_fake_script)()
+coroutine.wrap(GPQRP_fake_script)()
 
-local function TIKCO_fake_script()
+local function XVRAL_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[29]
@@ -5998,9 +5998,9 @@ local function TIKCO_fake_script()
 		task.spawn(helper17)
 	end)
 end
-coroutine.wrap(TIKCO_fake_script)()
+coroutine.wrap(XVRAL_fake_script)()
 
-local function LYHON_fake_script()
+local function ETVNF_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[30]
@@ -6281,9 +6281,9 @@ local function LYHON_fake_script()
 	
 	end)
 end
-coroutine.wrap(LYHON_fake_script)()
+coroutine.wrap(ETVNF_fake_script)()
 
-local function NOAET_fake_script()
+local function HGGHE_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[31]
@@ -6341,9 +6341,9 @@ local function NOAET_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(NOAET_fake_script)()
+coroutine.wrap(HGGHE_fake_script)()
 
-local function QQGHF_fake_script()
+local function QNVIZ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[32]
@@ -6395,9 +6395,9 @@ local function QQGHF_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(QQGHF_fake_script)()
+coroutine.wrap(QNVIZ_fake_script)()
 
-local function UWUHY_fake_script()
+local function XNEPC_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[33]
@@ -6449,9 +6449,9 @@ local function UWUHY_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(UWUHY_fake_script)()
+coroutine.wrap(XNEPC_fake_script)()
 
-local function MKAAG_fake_script()
+local function APQXQ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[34]
@@ -6503,9 +6503,9 @@ local function MKAAG_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(MKAAG_fake_script)()
+coroutine.wrap(APQXQ_fake_script)()
 
-local function QKLIP_fake_script()
+local function WONBT_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[35]
@@ -6557,9 +6557,9 @@ local function QKLIP_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(QKLIP_fake_script)()
+coroutine.wrap(WONBT_fake_script)()
 
-local function PLIYQ_fake_script()
+local function HJBIH_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[36]
@@ -6677,9 +6677,9 @@ local function PLIYQ_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(PLIYQ_fake_script)()
+coroutine.wrap(HJBIH_fake_script)()
 
-local function VZXWB_fake_script()
+local function VWEMT_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[37]
@@ -6960,9 +6960,9 @@ local function VZXWB_fake_script()
 	
 	end)
 end
-coroutine.wrap(VZXWB_fake_script)()
+coroutine.wrap(VWEMT_fake_script)()
 
-local function TWGMT_fake_script()
+local function WROKH_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[38]
@@ -7014,9 +7014,9 @@ local function TWGMT_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(TWGMT_fake_script)()
+coroutine.wrap(WROKH_fake_script)()
 
-local function NVSSR_fake_script()
+local function MLHXF_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[39]
@@ -7214,9 +7214,9 @@ local function NVSSR_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(NVSSR_fake_script)()
+coroutine.wrap(MLHXF_fake_script)()
 
-local function DSCMX_fake_script()
+local function WHTZR_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[40]
@@ -7228,9 +7228,9 @@ local function DSCMX_fake_script()
 		RequestCommand:InvokeServer(";char all 2x2x2x2_259")
 	end)
 end
-coroutine.wrap(DSCMX_fake_script)()
+coroutine.wrap(WHTZR_fake_script)()
 
-local function BWLZR_fake_script()
+local function PRYVY_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[41]
@@ -7348,9 +7348,9 @@ local function BWLZR_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(BWLZR_fake_script)()
+coroutine.wrap(PRYVY_fake_script)()
 
-local function UNJBH_fake_script()
+local function RJLWL_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[44]
@@ -7362,9 +7362,9 @@ local function UNJBH_fake_script()
 		RequestCommand:InvokeServer(";btools")
 	end)
 end
-coroutine.wrap(UNJBH_fake_script)()
+coroutine.wrap(RJLWL_fake_script)()
 
-local function AISFV_fake_script()
+local function RFWYR_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[45]
@@ -7578,9 +7578,9 @@ local function AISFV_fake_script()
 	
 	end)
 end
-coroutine.wrap(AISFV_fake_script)()
+coroutine.wrap(RFWYR_fake_script)()
 
-local function QIWTL_fake_script()
+local function OYRSI_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[46]
@@ -7599,9 +7599,9 @@ local function QIWTL_fake_script()
 	end)
 	
 end
-coroutine.wrap(QIWTL_fake_script)()
+coroutine.wrap(OYRSI_fake_script)()
 
-local function AQINE_fake_script()
+local function YLVAD_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[47]
@@ -7719,9 +7719,9 @@ local function AQINE_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(AQINE_fake_script)()
+coroutine.wrap(YLVAD_fake_script)()
 
-local function MVWLK_fake_script()
+local function QGXNT_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[48]
@@ -7733,9 +7733,9 @@ local function MVWLK_fake_script()
 		RequestCommand:InvokeServer(";fog 40")
 	end)
 end
-coroutine.wrap(MVWLK_fake_script)()
+coroutine.wrap(QGXNT_fake_script)()
 
-local function VKWIH_fake_script()
+local function UJUES_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[49]
@@ -7751,9 +7751,9 @@ local function VKWIH_fake_script()
 		RequestCommand:InvokeServer(";disco")
 	end)
 end
-coroutine.wrap(VKWIH_fake_script)()
+coroutine.wrap(UJUES_fake_script)()
 
-local function FFUMM_fake_script()
+local function BKOMW_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[50]
@@ -7871,9 +7871,9 @@ local function FFUMM_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(FFUMM_fake_script)()
+coroutine.wrap(BKOMW_fake_script)()
 
-local function XBWCF_fake_script()
+local function KXZDI_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[51]
@@ -8154,9 +8154,9 @@ local function XBWCF_fake_script()
 	
 	end)
 end
-coroutine.wrap(XBWCF_fake_script)()
+coroutine.wrap(KXZDI_fake_script)()
 
-local function IWTWQ_fake_script()
+local function XQLBY_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[52]
@@ -8168,9 +8168,9 @@ local function IWTWQ_fake_script()
 		RequestCommand:InvokeServer(";titler all TEAM 2x2")
 	end)
 end
-coroutine.wrap(IWTWQ_fake_script)()
+coroutine.wrap(XQLBY_fake_script)()
 
-local function UJKHH_fake_script()
+local function KHAHA_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[53]
@@ -8182,9 +8182,9 @@ local function UJKHH_fake_script()
 		RequestCommand:InvokeServer(";titler me 2x2x2x2x2")
 	end)
 end
-coroutine.wrap(UJKHH_fake_script)()
+coroutine.wrap(KHAHA_fake_script)()
 
-local function UKYRH_fake_script()
+local function HFDZW_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[54]
@@ -8810,9 +8810,9 @@ local function UKYRH_fake_script()
 		end)
 	end)
 end
-coroutine.wrap(UKYRH_fake_script)()
+coroutine.wrap(HFDZW_fake_script)()
 
-local function WJGLH_fake_script()
+local function EKEYG_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[55]
@@ -8930,9 +8930,9 @@ local function WJGLH_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(WJGLH_fake_script)()
+coroutine.wrap(EKEYG_fake_script)()
 
-local function JFGNB_fake_script()
+local function SZNRM_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[56]
@@ -8951,9 +8951,9 @@ local function JFGNB_fake_script()
 	end)
 	
 end
-coroutine.wrap(JFGNB_fake_script)()
+coroutine.wrap(SZNRM_fake_script)()
 
-local function ZMCQL_fake_script()
+local function ZOCVJ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[57]
@@ -9071,9 +9071,9 @@ local function ZMCQL_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(ZMCQL_fake_script)()
+coroutine.wrap(ZOCVJ_fake_script)()
 
-local function LYVOS_fake_script()
+local function USQWY_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[58]
@@ -9354,9 +9354,9 @@ local function LYVOS_fake_script()
 	
 	end)
 end
-coroutine.wrap(LYVOS_fake_script)()
+coroutine.wrap(USQWY_fake_script)()
 
-local function IAFFM_fake_script()
+local function PJZNN_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[59]
@@ -9637,9 +9637,9 @@ local function IAFFM_fake_script()
 	
 	end)
 end
-coroutine.wrap(IAFFM_fake_script)()
+coroutine.wrap(PJZNN_fake_script)()
 
-local function QAAVZ_fake_script()
+local function QMPRR_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[60]
@@ -9757,9 +9757,9 @@ local function QAAVZ_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(QAAVZ_fake_script)()
+coroutine.wrap(QMPRR_fake_script)()
 
-local function WZKRM_fake_script()
+local function ZPLTL_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[61]
@@ -10040,9 +10040,9 @@ local function WZKRM_fake_script()
 	
 	end)
 end
-coroutine.wrap(WZKRM_fake_script)()
+coroutine.wrap(ZPLTL_fake_script)()
 
-local function LXVRT_fake_script()
+local function AZSSE_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[62]
@@ -10160,9 +10160,9 @@ local function LXVRT_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(LXVRT_fake_script)()
+coroutine.wrap(AZSSE_fake_script)()
 
-local function STYZV_fake_script()
+local function GZODV_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[63]
@@ -10443,9 +10443,9 @@ local function STYZV_fake_script()
 	
 	end)
 end
-coroutine.wrap(STYZV_fake_script)()
+coroutine.wrap(GZODV_fake_script)()
 
-local function XEJGJ_fake_script()
+local function QXEHF_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[64]
@@ -10563,9 +10563,9 @@ local function XEJGJ_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(XEJGJ_fake_script)()
+coroutine.wrap(QXEHF_fake_script)()
 
-local function OETXS_fake_script()
+local function QGOEP_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[65]
@@ -10846,9 +10846,9 @@ local function OETXS_fake_script()
 	
 	end)
 end
-coroutine.wrap(OETXS_fake_script)()
+coroutine.wrap(QGOEP_fake_script)()
 
-local function DSAZO_fake_script()
+local function QBFZW_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[66]
@@ -10966,9 +10966,9 @@ local function DSAZO_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(DSAZO_fake_script)()
+coroutine.wrap(QBFZW_fake_script)()
 
-local function IQIEV_fake_script()
+local function OIFOW_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[67]
@@ -11249,9 +11249,9 @@ local function IQIEV_fake_script()
 	
 	end)
 end
-coroutine.wrap(IQIEV_fake_script)()
+coroutine.wrap(OIFOW_fake_script)()
 
-local function UTTIO_fake_script()
+local function OGJDG_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[68]
@@ -11369,9 +11369,9 @@ local function UTTIO_fake_script()
 		Sky(texId)
 	end)
 end
-coroutine.wrap(UTTIO_fake_script)()
+coroutine.wrap(OGJDG_fake_script)()
 
-local function FHGIY_fake_script()
+local function JYLTI_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[69]
@@ -11652,9 +11652,9 @@ local function FHGIY_fake_script()
 	
 	end)
 end
-coroutine.wrap(FHGIY_fake_script)()
+coroutine.wrap(JYLTI_fake_script)()
 
-local function CTEOL_fake_script()
+local function CCFNJ_fake_script()
 	local script = Instance.new('LocalScript')
 	script.Name = [[LocalScript]]
 	script.Parent = _i[71]
@@ -11665,7 +11665,7 @@ local function CTEOL_fake_script()
 	
 	end
 end
-coroutine.wrap(CTEOL_fake_script)()
+coroutine.wrap(CCFNJ_fake_script)()
 
 
 _i[1].Parent = PlayerGui
